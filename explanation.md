@@ -18,9 +18,8 @@ JOIN əməliyyatına əsas nümunə olaraq **Exercise 3.24** tapşırığını g
 
 Bu məsələni həll etmək üçün 3 müxtəlif cədvəl `JOIN` vasitəsilə əlaqələndirildi:
 1. `student` (s): Tələbənin məlumatlarını və departamentini saxlayır.
-2. `adv
-3. isor` (a): Tələbə ID-si (`s_id`) ilə ona təyin olunmuş müəllim ID-sini (`i_id`) bir-birinə bağlayır.
-4. `instructor` (i): Məsləhətçi müəllimin məlumatlarını və departamentini saxlayır.
+2. `advisor` (a): Tələbə ID-si (`s_id`) ilə ona təyin olunmuş müəllim ID-sini (`i_id`) bir-birinə bağlayır.
+3. `instructor` (i): Məsləhətçi müəllimin məlumatlarını və departamentini saxlayır.
 
 ```sql
 SELECT s.ID, s.name
@@ -29,11 +28,3 @@ JOIN advisor a ON s.ID = a.s_id
 JOIN instructor i ON a.i_id = i.ID
 WHERE s.dept_name = 'Accounting'
   AND i.dept_name = 'Physics';
-
-##4. SQL sorğularını yazarkən qarşılaşdığınız bir problemi və onun həllini izah edin.
-Sorğuları hazırlayarkən qarşılaşdığım əsas problemlərdən biri Exercise 3.33 tapşırığında vaxt formatlarının filtrasiyası zamanı ortaya çıxdı. Məqsəd günortadan sonra (saat 12:00 və ya daha gec) bitən bölməsi olan "Comp. Sci." kurslarını tapmaq idi.
-
-İlk cəhddə time_slot cədvəlində end_hr >= 12 şərtini yazdım. Lakin bu zaman saat tam 12:00-da bitən (yəni günortadan sonra davam etməyən) dərslər də səhvən nəticəyə daxil olurdu. Məsələni həll etmək üçün həm saat (end_hr), həm də dəqiqə (end_min) sütunlarını birlikdə nəzərə alan mürəkkəb məntiqi şərt qurmalı oldum.
-
-Həll yolu: Şərtı aşağıdakı kimi dəqiqləşdirdim:
-(ts.end_hr > 12 OR (ts.end_hr = 12 AND ts.end_min > 0))
