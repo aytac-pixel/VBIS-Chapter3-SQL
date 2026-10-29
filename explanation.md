@@ -1,12 +1,12 @@
-SQL Tapşırıqlarının İzahı və Təhlili
+## SQL Tapşırıqlarının İzahı və Təhlili
 
-##1. Ən çətin hesab etdiyiniz SQL sorğusu hansı oldu?
+## 1. Ən çətin hesab etdiyiniz SQL sorğusu hansı oldu?
 Mənim üçün ən mürəkkəb və analitik düşüncə tələb edən sorğu Exercise 3.28 oldu. Bu sorğuda müəllimin öz departamentində tədris olunan bütün kursları tədris edib-etmədiyini yoxlamaq lazımdır. SQL dilində bir çoxluğun başqa bir çoxluğu tam əhatə etməsini (relational division məntiqini) birbaşa ifadə edən vahid bir operator yoxdur.
 
 Bu məntiqi qurmaq üçün NOT EXISTS və EXCEPT (və ya ikiqat NOT EXISTS) strukturundan istifadə etmək lazımdır. Yəni, müəllimin aid olduğu departamentin bütün kurslar çoxluğundan həmin müəllimin faktiki tədris etdiyi kurslar çıxıldıqda (EXCEPT), geriyə heç bir kurs qalmamalıdır (NOT EXISTS). Bu cür mürəkkəb çoxluq fərqi və ikili inkar məntiqini düzgün zəncirləmək sorğunun qurulmasında ən çox vaxt aparan hissə oldu.
 
 
-##2. Hansı sorğu üçün alt sorğu (subquery) istifadə etdiniz?
+## 2. Hansı sorğu üçün alt sorğu (subquery) istifadə etdiniz?
 Alt sorğulardan (subqueries) tapşırığın bir çox mərhələsində effektiv şəkildə istifadə etdim:
 
 Exercise 3.11 (b): 2017-ci ildən əvvəl kurs almayan tələbələri tapmaq üçün WHERE ID NOT IN (SELECT ID FROM takes WHERE year < 2017) şəklində alt sorğu tətbiq olundu.
@@ -18,7 +18,7 @@ Exercise 3.25: WHERE budget > (SELECT budget FROM department WHERE dept_name = '
 Exercise 3.35: Maksimum tələbə qeydiyyatı olan bölməni taparkən WITH (CTE) bloku daxilində WHERE num = (SELECT MAX(num) FROM section_counts) alt sorğusundan istifadə olundu.
 
 
-##3. JOIN istifadə etdiyiniz bir nümunəni izah edin.
+## 3. JOIN istifadə etdiyiniz bir nümunəni izah edin.
 JOIN əməliyyatına əsas nümunə olaraq Exercise 3.24 tapşırığını göstərə bilərəm. Bu sorğuda Physics (Fizika) departamentindəki müəllim tərəfindən məsləhət (advising) verilən Accounting (Mühasibatlıq) tələbələrinin adını və ID-sini tapmaq tələb olunurdu.
 
 Bu məsələni həll etmək üçün 3 müxtəlif cədvəl JOIN vasitəsilə əlaqələndirildi:
